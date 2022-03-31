@@ -1,0 +1,70 @@
+[
+  {
+    "id": "1",
+    "description": "Masculino",
+    "children": [
+      {
+        "id": "2",
+        "description": "Calçados",
+        "children": [
+          {
+            "id": "3",
+            "description": "Botas"
+          },
+          {
+            "id": "4",
+            "description": "Chuteiras"
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "description": "Roupas",
+        "children": [
+          {
+            "id": "6",
+            "description": "Bermudas"
+          },
+          {
+            "id": "7",
+            "description": "Calças"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "description": "Feminino",
+    "children": [
+      {
+        "id": "9",
+        "description": "Moda Íntima",
+        "children": [
+          {
+            "id": "10",
+            "description": "Calcinhas"
+          },
+          {
+            "id": "11",
+            "description": "Sutiãs"
+          }
+        ]
+      },
+      {
+        "id": "12",
+        "description": "Roupas",
+        "children": [
+          {
+            "id": "13",
+            "description": "Bermudas"
+          },
+          {
+            "id": "14",
+            "description": "Camisetas"
+          }
+        ]
+      }
+    ]
+  }
+]
