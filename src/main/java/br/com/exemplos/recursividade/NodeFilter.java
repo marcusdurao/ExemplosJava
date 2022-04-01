@@ -1,9 +1,9 @@
 package br.com.exemplos.recursividade;
 
+import br.com.exemplos.dto.Node;
+import br.com.exemplos.utils.ExemploUtil;
 import lombok.SneakyThrows;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,11 +13,6 @@ import static org.apache.commons.lang3.StringUtils.stripAccents;
 
 
 public class NodeFilter {
-
-    @SneakyThrows
-    private static String getNodesFromJsonFile() {
-        return new String(Files.readAllBytes(new File("src/main/resources/json/lista.json").toPath()));
-    }
 
     private static void filterNodes(List<Node> nodes, String description) {
         filterNode(nodes.iterator(), description);
@@ -59,7 +54,7 @@ public class NodeFilter {
 
     @SneakyThrows
     public static void main(String[] args) {
-        var content = getNodesFromJsonFile();
+        var content = ExemploUtil.getNodesFromJsonFile("listaNode.json");
         var nodes = Node.jsonToObject(content);
 
         var result = new ArrayList<Node>();

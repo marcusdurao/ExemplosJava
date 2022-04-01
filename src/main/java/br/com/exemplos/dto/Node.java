@@ -1,4 +1,4 @@
-package br.com.exemplos.recursividade;
+package br.com.exemplos.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
