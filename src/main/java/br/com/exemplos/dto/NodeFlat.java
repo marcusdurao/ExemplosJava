@@ -15,4 +15,5 @@ public class NodeFlat {
     private Long id;
     private String description;
     private Long parentId;
+    private Long order;
 }
