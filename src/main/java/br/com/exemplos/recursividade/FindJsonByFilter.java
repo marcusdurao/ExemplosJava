@@ -12,7 +12,7 @@ import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.StringUtils.stripAccents;
 
 
-public class NodeFilter {
+public class FindJsonByFilter {
 
     private static void filterNodes(List<Node> nodes, String description) {
         filterNode(nodes.iterator(), description);

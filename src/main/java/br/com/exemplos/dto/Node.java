@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +15,15 @@ import java.util.List;
 import static java.util.Objects.nonNull;
 
 @Data
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Node {
-    private Long id;
-    private String description;
+public class Node extends NodeBaseDTO{
     private List<Node> children;
 
     public Node(Node node) {
-        id = node.getId();
-        description = node.getDescription();
+        super.setId(node.getId());
+        super.setDescription(node.getDescription());
         if (nonNull(node.getChildren())) {
             children = new ArrayList<>();
             node.getChildren().forEach(c -> children.add(new Node(c)));
