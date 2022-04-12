@@ -1,5 +1,6 @@
 package br.com.exemplos.recursividade;
 
+import br.com.exemplos.dto.BaseDto;
 import br.com.exemplos.dto.Node;
 import br.com.exemplos.dto.NodeBaseDTO;
 import br.com.exemplos.utils.ExemploUtil;
@@ -18,7 +19,6 @@ public class ReturnNodeById {
     private static boolean isEmpty(List<Node> nodes) {
         return isNull(nodes) || nodes.isEmpty();
     }
-
     private static NodeBaseDTO getNodeById(Iterator<Node> iterator, Long id) {
         Node node;
         NodeBaseDTO baseDTO = null;
@@ -26,23 +26,24 @@ public class ReturnNodeById {
             node = iterator.next();
 
             if (node.getId().equals(id)) {
-                baseDTO = NodeBaseDTO.builder()
+                return NodeBaseDTO
+                        .builder()
                         .id(node.getId())
                         .description(node.getDescription())
                         .build();
             }
 
-            if (!nonNull(baseDTO)) {
-                var children = node.getChildren();
-                if (isEmpty(node.getChildren())) {
-                    children = new ArrayList<>();
-                }
-
-                getNodeById(children.iterator(), id);
+            var children = node.getChildren();
+            if (isEmpty(node.getChildren())) {
+                children = new ArrayList<>();
             }
-            break;
-        }
 
+            baseDTO = getNodeById(children.iterator(), id);
+
+            if (nonNull(baseDTO)) {
+                return baseDTO;
+            }
+        }
         return baseDTO;
     }
 
@@ -51,10 +52,7 @@ public class ReturnNodeById {
         var content = ExemploUtil.getNodesFromJsonFile("listaNode.json");
         var nodes = Node.jsonToObject(content);
 
-        List<NodeBaseDTO> nodeFlatList = new ArrayList<>();
-        var node = getNodeById(nodes.iterator(), 3L);
-
-        System.out.println(node);
-
+        var teste =getNodeById(nodes.iterator(), 10L);
+        System.out.println(teste);
     }
 }
