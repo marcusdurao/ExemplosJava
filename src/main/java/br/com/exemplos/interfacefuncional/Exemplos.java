@@ -1,5 +1,7 @@
 package br.com.exemplos.interfacefuncional;
 
+import br.com.exemplos.enums.CustomerType;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -10,6 +12,9 @@ public class Exemplos {
     public static void main(String[] args) {
         fornecedor();
         consumidor();
+
+        var value = CustomerType.getCustomerType("DOCUMENT");
+        System.out.println(value);
     }
 
     private static void fornecedor() {
