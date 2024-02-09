@@ -22,6 +22,12 @@ public class Venda {
     private Cliente cliente;
     private List<VendaItem> itens;
 
+    private static int count = 0;
+
+    public int getCount(){
+        return count++;
+    }
+
     public static List<Venda> jsonToDto(String json) throws JsonProcessingException {
         return new ObjectMapper().readValue(json, new TypeReference<>() {
         });

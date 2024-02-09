@@ -12,7 +12,7 @@ import java.util.List;
 import static org.apache.commons.lang3.ObjectUtils.isEmpty;
 
 public class ConvertNodeToList {
-    private static void builderNodeFlat(Iterator<Node> iterator, List<NodeFlat> nodeFlatList) {
+    private static void builderNodeFlat(Iterator<Node> iterator, List<NodeFlat> nodeFlatList, Long idParent) {
         Node node;
         while (iterator.hasNext()) {
             node = iterator.next();
@@ -20,6 +20,7 @@ public class ConvertNodeToList {
             nodeFlatList.add(NodeFlat.builder()
                     .id(node.getId())
                     .description(node.getDescription())
+                    .parentId(idParent)
                     .build());
 
             var children = node.getChildren();
@@ -27,7 +28,7 @@ public class ConvertNodeToList {
                 children = new ArrayList<>();
             }
 
-            builderNodeFlat(children.iterator(), nodeFlatList);
+            builderNodeFlat(children.iterator(), nodeFlatList, node.getId());
         }
     }
 
@@ -38,7 +39,7 @@ public class ConvertNodeToList {
 
         List<NodeFlat> nodeFlatList = new ArrayList<>();
 
-        builderNodeFlat(nodes.iterator(), nodeFlatList);
+        builderNodeFlat(nodes.iterator(), nodeFlatList, null);
 
         System.out.println(nodeFlatList);
 

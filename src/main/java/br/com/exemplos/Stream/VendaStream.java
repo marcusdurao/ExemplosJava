@@ -3,6 +3,9 @@ package br.com.exemplos.Stream;
 import br.com.exemplos.dto.Cliente;
 import br.com.exemplos.dto.Venda;
 import br.com.exemplos.utils.ExemploUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.SneakyThrows;
 
 import java.util.Comparator;
@@ -16,21 +19,35 @@ public class VendaStream {
 
     @SneakyThrows
     public static void main(String[] args) {
-        var vendas = Venda.jsonToDto(ExemploUtil.getNodesFromJsonFile("Venda.json"));
+        Cliente cliente = null;
 
-//        sortComparatorMethodReference(vendas);
-//        sortComparatorMethodLambda(vendas);
+        if (cliente == null || cliente.getIdade() == null ){
+            System.out.println("");
+        }
 
-        Venda ve = new Venda();
-        Cliente cl = new Cliente();
-        cl.setIdade(1);
-        ve.setCliente(cl);
+        var teste = (724+3*32)/5;
+        System.out.println(teste);
 
-        var object = Optional.ofNullable(ve.getCliente())
-                                    .map(v -> v.getId())
-                .orElse(null);
-
-        System.out.println(object);
+//        var vendas = Venda.jsonToDto(ExemploUtil.getNodesFromJsonFile("Venda.json"));
+//
+////        sortComparatorMethodReference(vendas);
+////        sortComparatorMethodLambda(vendas);
+//
+//        Venda ve = new Venda();
+//        Cliente cl = new Cliente();
+//        cl.setIdade(1);
+//        ve.setCliente(cl);
+//
+//        var object = Optional.ofNullable(ve.getCliente())
+//                .map(v -> v.getId())
+//                .orElse(null);
+////
+////        vendas.stream()
+////                .map(c)
+////                .co
+//
+//
+//        System.out.println(object);
     }
 
     private static void sortComparatorMethodReference(List<Venda> vendas) {
@@ -48,8 +65,16 @@ public class VendaStream {
 
         if (nonNull(o)) {
             return o;
-        }
-        else
+        } else
             return null;
     }
+
+    @Data
+    @Builder
+    @AllArgsConstructor
+    private static class ObjetosIds {
+        private Long id;
+    }
+
+
 }
